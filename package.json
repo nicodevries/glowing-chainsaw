@@ -1,0 +1,30 @@
+{
+  "name": "glowing-chainsaw",
+  "version": "1.0.0",
+  "description": "a js13kgames submission",
+  "main": "game.js",
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicodevries/glowing-chainsaw.git"
+  },
+  "keywords": [
+    "js13kgames"
+  ],
+  "author": "Nico de Vries",
+  "bugs": {
+    "url": "https://github.com/nicodevries/glowing-chainsaw/issues"
+  },
+  "homepage": "https://github.com/nicodevries/glowing-chainsaw#readme",
+  "devDependencies": {
+    "jasmine-core": "^3.4.0",
+    "karma": "^4.2.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^1.2.0",
+    "karma-html-reporter": "^0.2.7",
+    "karma-jasmine": "^2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2"
+  }
+}
