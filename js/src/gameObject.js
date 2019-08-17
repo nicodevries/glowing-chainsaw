@@ -18,7 +18,6 @@ var newGameObject = function(x, y, game) {
 		self.moveTo(self.x + xDelta, self.y + yDelta);
 	}
 	self.draw = function () {
-		//console.log(`drawing on ${self.x}, ${self.y}`);
 		self.game.drawRect(self.x, self.y, self.width, self.height, null, self.game.getDynamicLayer());
 	}
 
@@ -27,10 +26,21 @@ var newGameObject = function(x, y, game) {
 	}
 
 	self.moveTo = function (x, y) {
-		self.clear();
-		self.x = x;
-		self.y = y;
-		self.draw();
+		if(self.positionIsInGameArea(x, y)) {
+			self.clear();
+			self.x = x;
+			self.y = y;
+			self.draw();
+		}
+	}
+
+	self.positionIsInGameArea = function (x, y) {
+		return (
+			x >= 0 && 
+			x + self.width <= self.game.getWidth() && 
+			y >= 0 && 
+			y + self.height <= self.game.getHeight()
+		);
 	}
 
 	return gameObject;
