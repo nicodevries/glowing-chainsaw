@@ -58,7 +58,7 @@ var newGame = function (width, height) {
 			layer => document.body.appendChild(layer)
 		);
     	self.createBackGround();
-    	self.firstItem = newGameObject(10, 10, game);
+    	self.firstItem = newPlayerCharacter(100, 100, game);
     	self.animation = setInterval(self.update, 20);
     }
 
@@ -81,8 +81,7 @@ var newGame = function (width, height) {
 	}
 
 	self.update = function () {
-		var pos = self.firstItem.getPosition();
-		self.firstItem.moveTo(pos.x + 1, pos.y + 1);
+		self.firstItem.update();
 	}
 
 	self.dynamicLayer = self.createLayer(2);

@@ -11,7 +11,7 @@ describe('an object', function () {
 	});
 	describe('when moved', function () {
 		beforeEach(function () {
-			gameObject.moveTo(30, 40);
+			gameObject.move(20, 20);
 		});
 		it('changes position to the new position', function () {
 			expect(gameObject.getPosition()).toEqual({x: 30, y: 40});

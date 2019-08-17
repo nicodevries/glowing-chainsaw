@@ -14,15 +14,23 @@ var newGameObject = function(x, y, game) {
 		}
 	}
 
-	gameObject.moveTo = function (x, y) {
-		self.game.clearRect(self.x, self.y, self.width, self.height, self.game.getDynamicLayer());
-		self.x = x;
-		self.y = y;
+	gameObject.move = function (xDelta, yDelta) {
+		self.moveTo(self.x + xDelta, self.y + yDelta);
+	}
+	self.draw = function () {
+		//console.log(`drawing on ${self.x}, ${self.y}`);
 		self.game.drawRect(self.x, self.y, self.width, self.height, null, self.game.getDynamicLayer());
 	}
 
-	gameObject.draw = function () {
-		self.game.drawRect(self.x, self.y, 10, 10, null, self.game.getDynamicLayer());
+	self.clear = function () {
+		self.game.clearRect(self.x, self.y, self.width, self.height, self.game.getDynamicLayer());
+	}
+
+	self.moveTo = function (x, y) {
+		self.clear();
+		self.x = x;
+		self.y = y;
+		self.draw();
 	}
 
 	return gameObject;
