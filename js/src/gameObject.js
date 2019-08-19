@@ -17,6 +17,11 @@ var newGameObject = function(x, y, game) {
 	gameObject.move = function (xDelta, yDelta) {
 		self.moveTo(self.x + xDelta, self.y + yDelta);
 	}
+
+	gameObject.update = function () {
+		throw "update not implemented";
+	}
+	
 	self.draw = function () {
 		self.game.drawRect(self.x, self.y, self.width, self.height, null, self.game.getDynamicLayer());
 	}

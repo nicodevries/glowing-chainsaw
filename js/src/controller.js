@@ -1,6 +1,7 @@
-var newController = function () {
+var newController = function (keys) {
 	var self = {};
 	var controller = {};
+	var keys = keys || {left: 37, up: 38, right: 39, down: 40}
 
 	controller.leftKeyDown = function () {
 		return self.leftKeyDown;
@@ -30,19 +31,19 @@ var newController = function () {
 
 	self.onKeyDown = function (e) {
         switch(e.keyCode) {
-        	case 37: self.leftKeyDown = true; break;
-        	case 38: self.upKeyDown = true; break;
-        	case 39: self.rightKeyDown = true; break;
-        	case 40: self.downKeyDown = true; break;
+        	case keys.left: self.leftKeyDown = true; break;
+        	case keys.up: self.upKeyDown = true; break;
+        	case keys.right: self.rightKeyDown = true; break;
+        	case keys.down: self.downKeyDown = true; break;
         }
     };
 
     self.onKeyUp = function (e) {
         switch(e.keyCode) {
-        	case 37: self.leftKeyDown = false; break;
-        	case 38: self.upKeyDown = false; break;
-        	case 39: self.rightKeyDown = false; break;
-        	case 40: self.downKeyDown = false; break;
+        	case keys.left: self.leftKeyDown = false; break;
+        	case keys.up: self.upKeyDown = false; break;
+        	case keys.right: self.rightKeyDown = false; break;
+        	case keys.down: self.downKeyDown = false; break;
         }
     };
 

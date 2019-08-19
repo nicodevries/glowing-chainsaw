@@ -1,6 +1,7 @@
 var newGame = function (width, height) {
 	var game = {};
 	var self = {};
+    var movingObjects = [];
 	self.WIDTH = width || 500;
 	self.HEIGHT = height || 500;
 	
@@ -53,6 +54,10 @@ var newGame = function (width, height) {
         canvas.fill();
     };
 
+    game.addMovingObject = function (movingObject) {
+        movingObjects.push(movingObject);
+    }
+
     game.start = function () {
     	[self.dynamicLayer, self.bg, self.staticLayer].forEach(
 			layer => document.body.appendChild(layer)
@@ -82,6 +87,7 @@ var newGame = function (width, height) {
 
 	self.update = function () {
 		self.firstItem.update();
+        movingObjects.forEach(item => item.update());
 	}
 
 	self.dynamicLayer = self.createLayer(2);
