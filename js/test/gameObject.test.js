@@ -1,8 +1,11 @@
+import newGameObject from '../src/gameObject.js';
+import newGame from '../src/game.js';
+
 describe('an object', function () {
-	var game = newGame();
-	var gameObject;
-	var expectedX = 10;
-	var expectedY = 20;
+	let game = newGame();
+	let gameObject;
+	let expectedX = 10;
+	let expectedY = 20;
 	beforeEach(function () {
 		gameObject = newGameObject(expectedX, expectedY, game);
 	});

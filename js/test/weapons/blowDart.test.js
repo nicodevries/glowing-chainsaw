@@ -1,5 +1,7 @@
+import newBlowDart from '../../src/weapons/blowDart.js';
+
 describe('a blowDart', function () {
-	var blowDart;
+	let blowDart;
 	beforeEach(function () {
 		blowDart = newBlowDart();
 	});

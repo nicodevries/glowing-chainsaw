@@ -1,11 +1,15 @@
-var newBullet = function (x, y, xSpeed, ySpeed, game) {
-	var self = newGameObject(x, y, game);
-	var bullet = {};
+import newGameObject from '../gameObject.js';
 
-	bullet.update = function () {
+const newBullet = (x, y, xSpeed, ySpeed, game) => {
+	const self = newGameObject(x, y, game);
+	const bullet = {};
+
+	bullet.update = () => {
 		self.move(xSpeed, ySpeed);
 	}
 
 	game.addMovingObject(bullet);
 	return bullet;
 }
+
+export default newBullet;

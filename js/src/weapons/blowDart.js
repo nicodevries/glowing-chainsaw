@@ -1,15 +1,19 @@
-var newBlowDart = function(wielder, game) {
-	var controller = newController({left: 65, up: 87, right: 68, down: 83});
-	var self = newWeapon(controller);
-	var blowDart = {};
+import newController from '../controller.js';
+import newWeapon from './weapon.js';
+import newBullet from './bullet.js';
+
+const newBlowDart = (wielder, game) => {
+	let controller = newController({left: 65, up: 87, right: 68, down: 83});
+	const self = newWeapon(controller);
+	const blowDart = {};
 	self.speed = 10;
 
-	blowDart.fire = function () {
+	blowDart.fire = () => {
 		self.fire();
 	};
 
-	self.determineDirection = function () {
-		var xDelta = 0, yDelta = 0;
+	self.determineDirection = () => {
+		let xDelta = 0, yDelta = 0;
 		if(controller.leftKeyDown()) {
 			xDelta -= self.speed;
 		}
@@ -28,10 +32,12 @@ var newBlowDart = function(wielder, game) {
 		return {x: xDelta, y: yDelta};
 	};
 
-	self.shoot = function (xSpeed, ySpeed) {
-		var startingPosition = wielder.getPosition();
-		var bullet = newBullet(startingPosition.x, startingPosition.y, xSpeed, ySpeed, game);
+	self.shoot = (xSpeed, ySpeed) => {
+		let startingPosition = wielder.getPosition();
+		let bullet = newBullet(startingPosition.x, startingPosition.y, xSpeed, ySpeed, game);
 	};
 
 	return blowDart;
 };
+
+export default newBlowDart;

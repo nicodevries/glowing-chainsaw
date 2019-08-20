@@ -1,43 +1,45 @@
-var newGame = function (width, height) {
-	var game = {};
-	var self = {};
-    var movingObjects = [];
+import newPlayerCharacter from './playerCharacter.js';
+
+const newGame = (width, height) => {
+	const game = {};
+	const self = {};
+    const movingObjects = [];
 	self.WIDTH = width || 500;
 	self.HEIGHT = height || 500;
 	
 
-	game.getBackGround = function () {
+	game.getBackGround = () => {
         return self.bgctx;
     };
 
-    game.getStaticLayer = function () {
+    game.getStaticLayer = () => {
         return self.sctx;
     };
 
-    game.getDynamicLayer = function () {
+    game.getDynamicLayer = () => {
         return self.dctx;
     };
 
-    game.getHeight = function () {
+    game.getHeight = () => {
         return self.HEIGHT;
     };
 
-    game.getWidth = function () {
+    game.getWidth = () => {
         return self.WIDTH;
     };
 
-    game.drawRect = function (x, y, width, height, color, canvas) {
+    game.drawRect = (x, y, width, height, color, canvas) => {
         canvas.globalCompositeOperation = "source-over";
         canvas.fillStyle = color || "#000000";
         canvas.fillRect(x, y, width, height);
     };
 
-    game.clearRect = function (x, y, width, height, canvas) {
+    game.clearRect = (x, y, width, height, canvas) => {
         canvas.globalCompositeOperation = "destination-out";
         canvas.clearRect(x, y, width, height);
     };
 
-    game.drawCircle = function (x, y, radius, color, canvas) {
+    game.drawCircle = (x, y, radius, color, canvas) => {
         canvas.globalCompositeOperation = "source-over";
         canvas.fillStyle = color || "#000000";
         canvas.beginPath();
@@ -46,7 +48,7 @@ var newGame = function (width, height) {
         canvas.fill();
     };
 
-    game.clearCircle = function (x, y, radius, canvas) {
+    game.clearCircle = (x, y, radius, canvas) => {
         canvas.globalCompositeOperation = "destination-out";
         canvas.beginPath();
         canvas.arc(x, y, radius, 0, 2*Math.PI, true);
@@ -54,11 +56,11 @@ var newGame = function (width, height) {
         canvas.fill();
     };
 
-    game.addMovingObject = function (movingObject) {
+    game.addMovingObject = movingObject => {
         movingObjects.push(movingObject);
     }
 
-    game.start = function () {
+    game.start = () => {
     	[self.dynamicLayer, self.bg, self.staticLayer].forEach(
 			layer => document.body.appendChild(layer)
 		);
@@ -68,14 +70,14 @@ var newGame = function (width, height) {
     }
 
 
-    self.createBackGround = function () {
-        var color = "#aaeeff"
+    self.createBackGround = () => {
+        let color = "#aaeeff"
         game.drawRect(0, 0, self.WIDTH, self.HEIGHT, color, self.bgctx);
         game.drawCircle(0, 0, 100, "#ffeeaa", self.bgctx);
     };
 
-	self.createLayer = function (zIndex) {
-		var canvas = document.createElement("canvas");
+	self.createLayer = zIndex => {
+		let canvas = document.createElement("canvas");
 		canvas.width = self.WIDTH.toString();
 		canvas.height = self.HEIGHT.toString();
 		canvas.style.position = "absolute";
@@ -85,7 +87,7 @@ var newGame = function (width, height) {
 		return canvas;
 	}
 
-	self.update = function () {
+	self.update = () => {
 		self.firstItem.update();
         movingObjects.forEach(item => item.update());
 	}
@@ -99,7 +101,9 @@ var newGame = function (width, height) {
 	return game;
 };
 
-function startGame() {
-	var game = newGame();
+window.startGame = () => {
+	let game = newGame();
 	game.start();
 }
+
+export default newGame;

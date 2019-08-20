@@ -1,5 +1,7 @@
+import newWeapon from '../../src/weapons/weapon.js';
+
 describe('a weapon', function () {
-	var weapon;
+	let weapon;
 	beforeEach(function () {
 		weapon = newWeapon();
 	});

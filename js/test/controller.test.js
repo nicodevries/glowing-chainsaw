@@ -1,5 +1,7 @@
+import newController from '../src/controller.js';
+
 describe('a controller', function () {
-	var controller;
+	let controller;
 	beforeEach(function () {
 		controller = newController();
 	});

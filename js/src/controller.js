@@ -1,35 +1,35 @@
-var newController = function (keys) {
-	var self = {};
-	var controller = {};
-	var keys = keys || {left: 37, up: 38, right: 39, down: 40}
+const newController = (providedKeys) => {
+	const self = {};
+	const controller = {};
+	let keys = providedKeys || {left: 37, up: 38, right: 39, down: 40}
 
-	controller.leftKeyDown = function () {
+	controller.leftKeyDown = () => {
 		return self.leftKeyDown;
 	};
 
-	controller.upKeyDown = function () {
+	controller.upKeyDown = () => {
 		return self.upKeyDown;
 	};
 
-	controller.rightKeyDown = function () {
+	controller.rightKeyDown = () => {
 		return self.rightKeyDown;
 	};
 
-	controller.downKeyDown = function () {
+	controller.downKeyDown = () => {
 		return self.downKeyDown;
 	};
 
-	controller.dispose = function () {
+	controller.dispose = () => {
 		document.removeEventListener('keydown', self.onKeyDown);
 		document.removeEventListener('keyup', self.onKeyUp);
 	};
 
-	self.initialize = function () {
+	self.initialize = () => {
 		document.addEventListener('keydown', self.onKeyDown);
 		document.addEventListener('keyup', self.onKeyUp);
 	};
 
-	self.onKeyDown = function (e) {
+	self.onKeyDown = e => {
         switch(e.keyCode) {
         	case keys.left: self.leftKeyDown = true; break;
         	case keys.up: self.upKeyDown = true; break;
@@ -38,7 +38,7 @@ var newController = function (keys) {
         }
     };
 
-    self.onKeyUp = function (e) {
+    self.onKeyUp = e => {
         switch(e.keyCode) {
         	case keys.left: self.leftKeyDown = false; break;
         	case keys.up: self.upKeyDown = false; break;
@@ -49,4 +49,6 @@ var newController = function (keys) {
 
     self.initialize();
 	return controller;
-}
+};
+
+export default newController;

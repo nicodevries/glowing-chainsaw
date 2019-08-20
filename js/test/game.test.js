@@ -1,7 +1,9 @@
+import newGame from '../src/game.js';
+
 describe('a game', function () {
-	var game;
-	var expectedWidth = 600;
-	var expectedHeight = 600;
+	let game;
+	let expectedWidth = 600;
+	let expectedHeight = 600;
 	beforeEach(function () {
 		game = newGame(expectedWidth, expectedHeight);
 	});

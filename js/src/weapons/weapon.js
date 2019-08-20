@@ -1,22 +1,26 @@
-var newWeapon = function (controller) {
-	var self = {};
-	var weapon = {};
-	var controller = controller || newController();
+import newController from '../controller.js';
 
-	weapon.fire = function () {
-		var direction = weapon.determineDirection();
+const newWeapon = (control) => {
+	const self = {};
+	const weapon = {};
+	let controller = control || newController();
+
+	weapon.fire = () => {
+		let direction = weapon.determineDirection();
 		if (direction) {
 			weapon.shoot(direction.x, direction.y);
 		}
 	}
 
-	weapon.determineDirection = function () {
+	weapon.determineDirection = () => {
 		throw "determineDirection not implemented";
 	}
 
-	weapon.shoot = function () {
+	weapon.shoot = () => {
 		throw "shoot not implemented";
 	}
 
 	return weapon;
-}
+};
+
+export default newWeapon;
