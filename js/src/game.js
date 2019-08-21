@@ -1,4 +1,5 @@
 import newPlayerCharacter from './playerCharacter.js';
+import newEnemy from './enemies/enemy.js';
 
 const newGame = (width, height) => {
 	const game = {};
@@ -73,6 +74,7 @@ const newGame = (width, height) => {
 		);
     	self.createBackGround();
     	self.firstItem = newPlayerCharacter(100, 100, game);
+        self.firstEnemy = newEnemy(200, 200, game);
     	self.animation = setInterval(self.update, 20);
     };
 
