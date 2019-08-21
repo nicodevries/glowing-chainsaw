@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "a js13kgames submission",
   "private": true,
-  "main": "game.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start"
+    "test": "./node_modules/karma/bin/karma start",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "karma-html-reporter": "^0.2.7",
     "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
-    "webpack": "^4.39.2"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   }
 }
