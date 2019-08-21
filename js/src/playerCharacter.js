@@ -40,6 +40,10 @@ const newPlayerCharacter = (x, y, game, control) => {
 		return {x: xDelta, y: yDelta};
     };
 
+    self.onExitGameArea = () => {
+    	
+    }
+
 	return playerCharacter;
 }
 
