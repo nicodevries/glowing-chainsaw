@@ -6,7 +6,11 @@ const newBullet = (x, y, xSpeed, ySpeed, game) => {
 
 	bullet.update = () => {
 		self.move(xSpeed, ySpeed);
-	}
+	};
+
+	self.onExitGameArea = () => {
+		self.destroy(bullet);
+	};
 
 	game.addMovingObject(bullet);
 	return bullet;

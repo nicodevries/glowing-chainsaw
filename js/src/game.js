@@ -58,7 +58,14 @@ const newGame = (width, height) => {
 
     game.addMovingObject = movingObject => {
         movingObjects.push(movingObject);
-    }
+    };
+
+    game.removeMovingObject = movingObject => {
+        let index = movingObjects.indexOf(movingObject);
+        if(index !== -1) {
+            movingObjects.splice(index, 1);
+        }
+    };
 
     game.start = () => {
     	[self.dynamicLayer, self.bg, self.staticLayer].forEach(
@@ -67,7 +74,7 @@ const newGame = (width, height) => {
     	self.createBackGround();
     	self.firstItem = newPlayerCharacter(100, 100, game);
     	self.animation = setInterval(self.update, 20);
-    }
+    };
 
 
     self.createBackGround = () => {

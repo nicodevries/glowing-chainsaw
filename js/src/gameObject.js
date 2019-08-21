@@ -12,23 +12,32 @@ const newGameObject = (x, y, game) => {
 			x: self.x,
 			y: self.y
 		}
-	}
+	};
 
 	gameObject.move = (xDelta, yDelta) => {
 		self.moveTo(self.x + xDelta, self.y + yDelta);
-	}
+	};
 
 	gameObject.update = () => {
 		throw "update not implemented";
-	}
+	};
+
+	gameObject.onExitGameArea = () => {
+		throw "onExitGameArea not implemented";
+	};
+
+	gameObject.destroy = (instance) => {
+		self.clear();
+		self.game.removeMovingObject(instance);
+	};
 	
 	self.draw = () => {
 		self.game.drawRect(self.x, self.y, self.width, self.height, null, self.game.getDynamicLayer());
-	}
+	};
 
 	self.clear = () => {
 		self.game.clearRect(self.x, self.y, self.width, self.height, self.game.getDynamicLayer());
-	}
+	};
 
 	self.moveTo = (x, y) => {
 		if(self.positionIsInGameArea(x, y)) {
@@ -36,8 +45,10 @@ const newGameObject = (x, y, game) => {
 			self.x = x;
 			self.y = y;
 			self.draw();
+		} else {
+			gameObject.onExitGameArea();
 		}
-	}
+	};
 
 	self.positionIsInGameArea = (x, y) => {
 		return (
@@ -46,9 +57,9 @@ const newGameObject = (x, y, game) => {
 			y >= 0 && 
 			y + self.height <= self.game.getHeight()
 		);
-	}
+	};
 
 	return gameObject;
-}
+};
 
 export default newGameObject;
