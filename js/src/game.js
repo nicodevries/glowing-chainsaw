@@ -1,12 +1,12 @@
 import newPlayerCharacter from './playerCharacter.js';
 import newEnemy from './enemies/enemy.js';
 
-const newGame = (width, height) => {
+const newGame = (gameWidth, gameHeight) => {
 	const game = {};
 	const self = {};
     const movingObjects = [];
-	self.WIDTH = width || 500;
-	self.HEIGHT = height || 500;
+	self.WIDTH = gameWidth || 500;
+	self.HEIGHT = gameHeight || 500;
 	
 
 	game.getBackGround = () => {

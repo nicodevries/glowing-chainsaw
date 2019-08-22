@@ -32,11 +32,11 @@ const newGameObject = (x, y, game) => {
 	};
 	
 	self.draw = () => {
-		self.game.drawRect(self.x, self.y, self.width, self.height, null, self.game.getDynamicLayer());
+		self.game.drawRect(self.x - self.width/2, self.y - self.height/2, self.width, self.height, null, self.game.getDynamicLayer());
 	};
 
 	self.clear = () => {
-		self.game.clearRect(self.x, self.y, self.width, self.height, self.game.getDynamicLayer());
+		self.game.clearRect(self.x - self.width/2 -1, self.y - self.height/2 -1, self.width + 2, self.height + 2, self.game.getDynamicLayer());
 	};
 
 	self.moveTo = (x, y) => {
@@ -53,9 +53,9 @@ const newGameObject = (x, y, game) => {
 	self.positionIsInGameArea = (x, y) => {
 		return (
 			x >= 0 && 
-			x + self.width <= self.game.getWidth() && 
+			x <= self.game.getWidth() && 
 			y >= 0 && 
-			y + self.height <= self.game.getHeight()
+			y <= self.game.getHeight()
 		);
 	};
 
