@@ -46,7 +46,7 @@ const newGameObject = (x, y, game) => {
 			self.y = y;
 			self.draw();
 		} else {
-			gameObject.onExitGameArea();
+			gameObject.onExitGameArea(self.outsideGameArea(x, y));
 		}
 	};
 
@@ -58,6 +58,15 @@ const newGameObject = (x, y, game) => {
 			y <= self.game.getHeight()
 		);
 	};
+
+	self.outsideGameArea = (x, y) => {
+		return {
+			left: x < 0,
+			right: x > self.game.getWidth(),
+			top: y < 0,
+			bottom: y > self.game.getHeight()
+		}
+	}
 
 	return gameObject;
 };

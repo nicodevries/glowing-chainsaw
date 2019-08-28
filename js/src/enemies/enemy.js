@@ -10,7 +10,6 @@ const newEnemy = (x, y, game) => {
 
 	enemy.update = () => {
 		self.move(self.speed.x, self.speed.y);
-		console.log(`x: ${self.speed.x}, y: ${self.speed.y}`);
 	};
 
 	self.initialize = () => {
@@ -19,14 +18,11 @@ const newEnemy = (x, y, game) => {
 	};
 
 	self.onExitGameArea = (hit) => {
-		let position = self.getPosition();
-		let xNext = position.x + self.speed.x;
-		let yNext = position.y + self.speed.y;
-		if (xNext >= game.getWidth() || xNext <= 0) {
+		if (hit.left || hit.right) {
 			self.speed.x *= (-0.1 * randInt(1,10));
 			self.speed.y = otherLeg(self.velocity, self.speed.x, self.speed.y < 0);
 		}
-		if (yNext >= game.getHeight() || yNext <= 0) {
+		if (hit.top || hit.bottom) {
 			self.speed.y *= (-0.1 * randInt(1,10));
 			self.speed.x = otherLeg(self.velocity, self.speed.y, self.speed.x < 0);
 		}
